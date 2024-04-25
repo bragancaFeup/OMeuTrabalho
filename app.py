@@ -3,6 +3,10 @@ from datafile import filename
 
 import os
 
+from classes.tipos import Tipos
+from classes.filmes import Filmes
+
+
 from classes.customer import Customer
 from classes.product import Product
 from classes.customerorder import CustomerOrder
@@ -11,11 +15,14 @@ from classes.userlogin import Userlogin
 
 app = Flask(__name__)
 
-Customer.read(filename + 'business.db')
-Product.read(filename + 'business.db')
-CustomerOrder.read(filename + 'business.db')
-OrderProduct.read(filename + 'business.db')
-Userlogin.read(filename + 'business.db')
+Tipos.read(filename + 'YouTube.db')
+Filmes.read(filename + 'YouTube.db')
+
+Customer.read(filename + 'YouTube.db')
+Product.read(filename + 'YouTube.db')
+CustomerOrder.read(filename + 'YouTube.db')
+OrderProduct.read(filename + 'YouTube.db')
+Userlogin.read(filename + 'YouTube.db')
 prev_option = ""
 submenu = ""
 app.secret_key = 'BAD_SECRET_KEY'
@@ -30,6 +37,7 @@ import subs_gformT as gfTsub
 import subs_hform as gfhsub
 import subs_subform as gfsubsub
 import subs_productFoto as productFotosub
+import subs_filmes as filmessub
 
 
 @app.route("/")
@@ -88,6 +96,11 @@ def ordermapa():
 
     return render_template("uc.html", ulogin=session.get("user"),submenu=submenu)
 
+
+@app.route("/filmes", methods=["post","get"])
+def filmesform(cname='Filmes'):
+    submenu = request.args.get("subm")
+    return filmessub.filmesform(cname,submenu)
 
 
     

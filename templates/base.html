@@ -14,6 +14,11 @@
                     <li><a class="button" href="/login">Login</a></li>
                 {% else %}
                     <li><a class="button" href="/logoff">Logoff</a></li>
+                    
+                    <li><a class="button" href="/submenu?subm=tipos">Tipos</a></li>
+                     <li><a class="button" href="/submenu?subm=filmes">Filmes</a></li>
+                     
+                    
                     <li><a class="button" href="/gform/Customer">Customer</a></li>
                     
                     <li><a class="button" href="/submenu?subm=product">Product</a></li>
@@ -24,6 +29,18 @@
                     <li><a class="button" style="color:lightblue">User: {{ulogin}}</a></li>
                     
                     <br><br>
+                    
+                    {% if submenu == "tipos" %}
+                        <li><a class="button" href="/gform/Tipos?option=''&subm=tipos">Tipos form</a></li>
+                        <li><a class="button" href="/gformT/Tipos?option=''&subm=tipos">tipos tabela</a></li>
+                    {% endif %} 
+                    {% if submenu == "filmes" %}
+                        <li><a class="button" href="/gform/Filmes?option=''&subm=filmes">Filmes form</a></li>
+                        <li><a class="button" href="/gformT/Filmes?option=''&subm=filmes">Filmes tabela</a></li>
+                        <li><a class="button" href="/filmes?option=''&subm=filmes">Filmes form nova</a></li>
+                        
+                    {% endif %} 
+                    
                     {% if submenu == "order" %}
                         <li><a class="button" href="/subform/CustomerOrder_OrderProduct?option=''&subm=order">Order lines</a></li>
                         <li><a class="button" href="/order/mapa?option=''">Mapa encomendas</a></li>

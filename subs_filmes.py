@@ -19,7 +19,7 @@ from classes.userlogin import Userlogin
 
 prev_option = ""
 
-def gform(cname='',submenu=""):
+def filmesform(cname='',submenu=""):
     global prev_option
     ulogin=session.get("user")
     if (ulogin != None):
@@ -74,9 +74,11 @@ def gform(cname='',submenu=""):
             obj = dict()
             for att in cl.att:
                 obj[att] = ""
-        return render_template("gform.html", butshow=butshow, butedit=butedit,
+            obj['_tipo'] = '0'
+        return render_template("filmes.html", butshow=butshow, butedit=butedit,
                         cname=cname, obj=obj,att=cl.att,header=cl.header,des=cl.des,
                         ulogin=session.get("user"),auto_number=cl.auto_number,
-                        submenu=submenu)
+                        submenu=submenu,
+                        Tipos = Tipos.obj )
     else:
         return render_template("index.html", ulogin=ulogin)

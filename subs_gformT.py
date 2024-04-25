@@ -6,6 +6,11 @@
 
 """""
 from flask import Flask, render_template, request, session
+
+from classes.tipos import Tipos
+from classes.filmes import Filmes
+
+
 from classes.customer import Customer
 from classes.product import Product
 from classes.customerorder import CustomerOrder
